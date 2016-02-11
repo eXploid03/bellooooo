@@ -10,6 +10,7 @@ class Drona {
 	private int x;
 	private int y;
 	private int busy;
+	private int timpPauza;
 	
 	public Drona(int id, int maximLoad, int[] inventory ,int x, int y) {
 		this.setId(id);
@@ -84,10 +85,21 @@ class Drona {
 	return 0;
 	}
 	
-	public void fly(int x, int y) {
-		//ruta cea mai scurta
-		//o sa caut pe google
-		
+	public int fly(int x, int y){
+		if(this.timpPauza==0){
+		this.setX(x);
+		this.setY(y);
+		this.timpPauza=(this.x-x)*(this.x-x)-(this.y-y)*(this.y-y);
+		this.timpPauza=(int) Math.sqrt(this.timpPauza);
+		}
+		else
+			return 0;
+		return 1;
+	}
+	
+	public void scade(){
+		if(this.timpPauza!=0)
+			this.timpPauza--;
 	}
 	
 	//0L123 (Command to drone 0, load at warehouse 1 products of product type
