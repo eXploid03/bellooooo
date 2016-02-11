@@ -1,0 +1,11 @@
+public class Map {
+	//1 - depozit
+	//2 -client
+	int[][] Matrice;
+	int rows,cols;
+	
+	public Map(){
+	
+	}
+
+}
