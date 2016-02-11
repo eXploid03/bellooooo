@@ -33,6 +33,11 @@ class Drona {
 	public void setBusy(int x){
 		this.busy=x;
 	}
+	
+	public int getBusy(){
+		return this.busy;
+	}
+	
 	public int getX() {
 		return x;
 	}
