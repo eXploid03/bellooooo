@@ -55,21 +55,35 @@ public class Map {
 					dep[i].setProdus(j, cantitateProdus);
 				}
 			}
-			nrComenzi=scanner.nextInt();
-			
+			nrComenzi = scanner.nextInt();
+			c = new Comenzi[nrComenzi];
+			for (int i = 0; i < nrComenzi; i++) {
+				int x, y;
+				int nrItems;
+				x = scanner.nextInt();
+				y = scanner.nextInt();
+				nrItems = scanner.nextInt();
+				c[i] = new Comenzi(i, x, y, nrItems);
+				this.setClient(x, y);
+				for (int j = 0; j < nrItems; j++) {
+					int produs = scanner.nextInt();
+					c[i].setComenzi(j, produs);
+				}
+
+			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
 	}
-	
-	public void afisareGrid(){
-		for(int i=0; i<this.rows;i++){
-			
-			for(int j=0;j<this.cols;j++)
-				System.out.print(Matrice[i][j]+ " " );
+
+	public void afisareGrid() {
+		for (int i = 0; i < this.rows; i++) {
+
+			for (int j = 0; j < this.cols; j++)
+				System.out.print(Matrice[i][j] + " ");
 			System.out.println();
-			}
+		}
 	}
 
 	public void setDepozit(int x, int y) {
@@ -80,4 +94,39 @@ public class Map {
 		Matrice[x][y] = 2;
 	}
 
+	public int[][] getMatrice() {
+		return this.Matrice;
+	}
+
+	public int getRows() {
+		return this.rows;
+	}
+
+	public int getCols() {
+		return this.cols;
+	}
+
+	public int getNrDrone() {
+		return this.nrDrone;
+	}
+
+	public int getTure() {
+		return this.ture;
+	}
+
+	public int getmaxPayload() {
+		return this.maxPayload;
+	}
+
+	public int getNrProduse() {
+		return this.nrProduse;
+	}
+
+	public int getNrDepozite() {
+		return this.nrDepozite;
+	}
+
+	public int getNrComenzi() {
+		return this.nrComenzi;
+	}
 }
