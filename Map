@@ -11,11 +11,13 @@ public class Map {
 	private Drona[] d;
 	private Produs[] p;
 	private Warehouse[] dep;
+	private Comenzi[] c;
 	private int nrDrone;
 	private int ture;
 	private int maxPayload;
 	private int nrProduse;
 	private int nrDepozite;
+	private int nrComenzi;
 
 	public Map(String fileName) {
 
@@ -47,15 +49,27 @@ public class Map {
 				x = scanner.nextInt();
 				y = scanner.nextInt();
 				dep[i] = new Warehouse(i, x, y, nrProduse);
+				this.setDepozit(x, y);
 				for (int j = 0; j < nrProduse; j++) {
 					int cantitateProdus = scanner.nextInt();
 					dep[i].setProdus(j, cantitateProdus);
 				}
 			}
+			nrComenzi=scanner.nextInt();
+			
 			scanner.close();
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	public void afisareGrid(){
+		for(int i=0; i<this.rows;i++){
+			
+			for(int j=0;j<this.cols;j++)
+				System.out.print(Matrice[i][j]+ " " );
+			System.out.println();
+			}
 	}
 
 	public void setDepozit(int x, int y) {
