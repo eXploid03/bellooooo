@@ -9,6 +9,7 @@ class Drona {
 	private int nrItems;
 	private int x;
 	private int y;
+	private int busy;
 	
 	public Drona(int id, int maximLoad, int[] inventory ,int x, int y) {
 		this.setId(id);
@@ -16,6 +17,7 @@ class Drona {
 		maxLoad = maximLoad;
 		this.setX(x);
 		this.setY(y);
+		this.busy=0;
 	//	this.setNrItems(nrItems);
 	//nu e nevoie din moment ce in setMaxLoad se instantiaza cu 0 sau cu cat trebuie.
 	}
@@ -26,6 +28,9 @@ class Drona {
 		for ( int i = 0 ; i < this.getNrItems(); i++ ){ 
 			System.out.println("Item id:" + i + "  " + this.getInventory()[i] + " g");
 		}
+	}
+	public void setBusy(int x){
+		this.busy=x;
 	}
 	public int getX() {
 		return x;
