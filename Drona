@@ -1,0 +1,122 @@
+import java.awt.Point;
+import java.util.Arrays;
+import java.util.LinkedList;
+
+class Drona {
+	private int id;
+	private static int maxLoad;
+	private int[] inventory;
+	private int nrItems;
+	private int x;
+	private int y;
+	
+	public Drona(int id, int maximLoad, int[] inventory ,int x, int y) {
+		this.setId(id);
+		this.setInventory(inventory);
+		maxLoad = maximLoad;
+		this.setX(x);
+		this.setY(y);
+	//	this.setNrItems(nrItems);
+	//nu e nevoie din moment ce in setMaxLoad se instantiaza cu 0 sau cu cat trebuie.
+	}
+	public void displayInfo() {
+		System.out.println("Drone with ID:" + this.getId() + "");
+		System.out.println("X:" + this.getX() + "Y:" + this.getY());
+		
+		for ( int i = 0 ; i < this.getNrItems(); i++ ){ 
+			System.out.println("Item id:" + i + "  " + this.getInventory()[i] + " g");
+		}
+	}
+	public int getX() {
+		return x;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+	public int getY() {
+		return y;
+	}
+	public void setY(int y) {
+		this.y = y;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getNrItems() {
+		return nrItems;
+	}
+	public void setNrItems(int nrItems) {
+		this.nrItems = nrItems;
+	}
+	public void addInventory(int item, int index) {
+		this.inventory[index] = item;
+	}
+	public int[] getInventory() {
+		return inventory;
+	}
+	public void setInventory(int[] inventory) {
+		this.inventory = inventory;
+		this.setNrItems(inventory.length);
+	}
+	public void pushInventory(int item) {
+		this.inventory[this.getNrItems()] = item;
+		this.setNrItems(this.getNrItems() + 1);
+	}
+	public int popIventory(int item) {
+		for ( int i = 0; i < this.getNrItems(); i++) {
+			if (this.getInventory()[i] == item) {
+				for(int j = i + 1; j < this.getNrItems() - 1; j++) {
+					this.addInventory(this.getInventory()[j],i);
+				}
+				this.setNrItems(this.getNrItems() - 1);
+				return item;
+			}
+		}
+	return 0;
+	}
+	
+	public void fly(int x, int y) {
+		//ruta cea mai scurta
+		//o sa caut pe google
+		
+	}
+	
+	//0L123 (Command to drone 0, load at warehouse 1 products of product type
+	//2, three of them.
+	//id-ul dronei il luam din drone.getId()...
+	public void Load(int warehouseID, int productType, int howMany) {
+		//ruta cea mai scurta..
+		//si descarca
+	}
+	
+	public void visit(String []map , int xPos, int yPos){
+        int []x = {0,0,1,-1};//This represent 4 directions right, left, down , up
+        int []y = {1,-1,0,0};
+        Point thePoint = new Point( xPos, yPos);
+        LinkedList<Point> q = new LinkedList();
+        q.add(thePoint);
+        int n = map.length;
+        int m = map[0].length();
+        int[][]dist = new int[n][m];
+        for(int []a : dist){
+            Arrays.fill(a,-1);
+        }
+        dist[thePoint.x][thePoint.y] = 0;
+        while(!q.isEmpty()){
+            Point p = q.removeFirst();
+            for(int i = 0; i < 4; i++){
+                int a = p.x + x[i];
+                int b = p.y + y[i];
+                if(a >= 0 && b >= 0 && a < n && b < m && dist[a][b] == -1 && map[a].charAt(b) != '*' ){
+                    dist[a][b] = 1 + dist[p.x][p.y];
+                    q.add(new Point(a,b));
+                }
+            }
+        }
+    }
+	
+}
