@@ -1,27 +1,60 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class Map {
-	//0- liber
-	//1 - depozit
-	//2 -client
+	// 0- liber
+	// 1 - depozit
+	// 2 -client
 	int[][] Matrice;
-	int rows,cols;
-	
-	public Map(int rows, int cols){
-		this.rows=rows;
-		this.cols=cols;
-		Matrice=new int[rows][cols];
-		for(int i=0;i<this.rows;i ++){
-			for(int j=0;j<this.cols;j++)
-				Matrice[i][j]=0;
+	int rows, cols;
+	Drona[] d;
+	Produse[] p;
+	Depozit[] dep;
+	int nrDrone;
+	int ture;
+	int maxPayload;
+	int nrProduse;
+	int nrDepozite;
+
+	public Map(String fileName) {
+
+		try {
+			Scanner scanner = new Scanner(new File(fileName));
+			this.rows = scanner.nextInt();
+			this.cols = scanner.nextInt();// citim nr de randuri si de coloane
+			Matrice = new int[rows][cols];
+			for (int i = 0; i < this.rows; i++) {
+				for (int j = 0; j < this.cols; j++)
+					Matrice[i][j] = 0;
+			} // initializam matricea goala
+			this.nrDrone = scanner.nextInt(); // citim nr de drone
+			d = new Drona[nrDrone];
+			ture = scanner.nextInt(); // numarul de ture
+			maxPayload = scanner.nextInt();// numarul maxim de incarcare a unei
+											// drone
+			nrProduse = scanner.nextInt();
+			p = new Produse[nrProduse];
+			for (int i = 0; i < nrProduse; i++) {
+				int weight;
+				weight = scanner.nextInt();
+				p[i] = new Produs(i, weight);
+			}
+			nrDepozite = scanner.nextInt();
+			dep = new Depozit[nrDepozite];
+
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
 		}
 	}
-		
-	public void setDepozit(int x, int y){
-		Matrice[x][y]=1;
-	}
-	
-	public void setClient(int x,int y){
-		Matrice[x][y]=2;
+
+	public void setDepozit(int x, int y) {
+		Matrice[x][y] = 1;
 	}
 
-	
+	public void setClient(int x, int y) {
+		Matrice[x][y] = 2;
+	}
+
 }
