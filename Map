@@ -1,11 +1,27 @@
 public class Map {
+	//0- liber
 	//1 - depozit
 	//2 -client
 	int[][] Matrice;
 	int rows,cols;
 	
-	public Map(){
+	public Map(int rows, int cols){
+		this.rows=rows;
+		this.cols=cols;
+		Matrice=new int[rows][cols];
+		for(int i=0;i<this.rows;i ++){
+			for(int j=0;j<this.cols;j++)
+				Matrice[i][j]=0;
+		}
+	}
+		
+	public void setDepozit(int x, int y){
+		Matrice[x][y]=1;
+	}
 	
+	public void setClient(int x,int y){
+		Matrice[x][y]=2;
 	}
 
+	
 }
