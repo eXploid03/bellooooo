@@ -1,4 +1,4 @@
-public class Warehouse {
+public class Warehouse extends AbstractClass {
 	private int id;
 	private int x;
 	private int y;
