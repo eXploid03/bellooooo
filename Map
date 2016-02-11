@@ -6,16 +6,16 @@ public class Map {
 	// 0- liber
 	// 1 - depozit
 	// 2 -client
-	int[][] Matrice;
-	int rows, cols;
-	Drona[] d;
-	Produse[] p;
-	Depozit[] dep;
-	int nrDrone;
-	int ture;
-	int maxPayload;
-	int nrProduse;
-	int nrDepozite;
+	private int[][] Matrice;
+	private int rows, cols;
+	private Drona[] d;
+	private Produs[] p;
+	private Warehouse[] dep;
+	private int nrDrone;
+	private int ture;
+	private int maxPayload;
+	private int nrProduse;
+	private int nrDepozite;
 
 	public Map(String fileName) {
 
@@ -34,15 +34,24 @@ public class Map {
 			maxPayload = scanner.nextInt();// numarul maxim de incarcare a unei
 											// drone
 			nrProduse = scanner.nextInt();
-			p = new Produse[nrProduse];
+			p = new Produs[nrProduse];
 			for (int i = 0; i < nrProduse; i++) {
 				int weight;
 				weight = scanner.nextInt();
 				p[i] = new Produs(i, weight);
 			}
 			nrDepozite = scanner.nextInt();
-			dep = new Depozit[nrDepozite];
-
+			dep = new Warehouse[nrDepozite];
+			for(int i=0;i<nrDepozite;i++){
+				int x, y;
+				x=scanner.nextInt();
+				y=scanner.nextInt();
+				dep[i]=new Warehouse(i, x, y, nrProduse);
+				for(int j=0;j<nrProduse;j++){
+					int cantitateProdus=scanner.nextInt();
+					dep[i].setProdus(j,cantitateProdus);
+				}
+			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
