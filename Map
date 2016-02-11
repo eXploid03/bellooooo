@@ -89,6 +89,12 @@ public class Map {
 		}
 	}
 
+	public int dronaLibera() {
+		for (int i = 0; i < nrDrone; i++)
+			if (d[i].getBusy() == 0)
+				return i;
+		return 0;
+	}
 	public void setDepozit(int x, int y) {
 		Matrice[x][y] = 1;
 	}
