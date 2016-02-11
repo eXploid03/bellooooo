@@ -1,12 +1,13 @@
-public class Warehouse extends AbstractClass {
+
+public class Warehouse {//extends AbstractClass {
 	private int id;
 	private int x;
 	private int y;
 	private int qty[]; //quantity
 	
-	public Warehouse(int id, int x, int y, int[] qty) {
+	public Warehouse(int id, int x, int y, int nrProduse) {
 		this.setId(id);
-		this.setQty(qty);
+		qty=new int[nrProduse];
 		this.setX(x);
 		this.setY(y);		
 	}
@@ -34,6 +35,10 @@ public class Warehouse extends AbstractClass {
 	}
 	public void setQty(int[] qty) {
 		this.qty = qty;
+	}
+	
+	public void setProdus(int j, int cantitate){
+		this.qty[j]=cantitate;
 	}
 
 	
