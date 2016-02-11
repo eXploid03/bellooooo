@@ -1,0 +1,18 @@
+
+public class Comenzi {
+	private int id;
+	private int x, y, nrItems;
+	private int tipes[];
+
+	public Comenzi(int id, int x, int y, int nrItems) {
+		this.id = id;
+		this.x = x;
+		this.y = y;
+		this.tipes = new int[nrItems];
+	}
+
+	public void setComenzi(int j, int produs) {
+		tipes[j] = produs;
+	}
+
+}
