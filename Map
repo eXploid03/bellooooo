@@ -42,6 +42,7 @@ public class Map {
 				weight = scanner.nextInt();
 				p[i] = new Produs(i, weight);
 			}
+			
 			nrDepozite = scanner.nextInt();
 			dep = new Warehouse[nrDepozite];
 			for (int i = 0; i < nrDepozite; i++) {
