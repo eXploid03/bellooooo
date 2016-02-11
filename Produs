@@ -1,0 +1,26 @@
+
+public class Produs {
+	private int id;
+	private int weight;
+
+	public Produs(int id, int weight) {
+		this.setId(id);
+		this.setWeight(weight);
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	public int id() {
+		return this.id;
+	}
+
+	public int getWeight() {
+		return this.weight;
+	}
+}
